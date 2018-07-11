@@ -71,7 +71,7 @@ App = {
 
       $("#contractAddress").html(App.ContractAddress);
       $('#contractAddress').attr("href", App.network + App.ContractAddress);
-      
+
       var candidatesResult = $("#candidatesResults");
       candidatesResult.empty();
 
@@ -105,7 +105,7 @@ App = {
 
   castVote: function() {
     var candidateId = $('#candidatesSelect').val();
-    App.Election.vote(candidateId, { from: App.account }).then(function(result) {
+    App.Election.vote(candidateId, { from: App.account, gasPrice:web3.toWei("50", "gwei") }).then(function(result) {
       console.log("Ваш голос учитывается");
       $("#content").hide();
       $("#loader").show();
