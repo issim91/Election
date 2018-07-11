@@ -104,11 +104,13 @@ App = {
   },
 
   castVote: function() {
+    var loader =  $('#loader');
+    var content = $('#content');
+    loader.show();
+    content.hide();
     var candidateId = $('#candidatesSelect').val();
     App.Election.vote(candidateId, { from: App.account, gasPrice:web3.toWei("50", "gwei") }).then(function(result) {
       console.log("Ваш голос учитывается");
-      $("#content").hide();
-      $("#loader").show();
     }).catch(function(err) {
       console.error(err);
     });
